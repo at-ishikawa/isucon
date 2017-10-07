@@ -1,0 +1,15 @@
+- name: Check if a slow query log conf exists
+  stat:
+    path: /etc/mysql/conf.d/slow_log.conf
+  register: slow_log_stat
+
+- name: Copy a slow log configuration
+  copy:
+    src: ../files/slow_log.conf
+    dest: /etc/mysql/conf.d/slow_log.conf
+  when:
+    slow_log_stat.stat.exists == false
+  notify: Restart mysql
+
+- name: Check if a my.cnf includes /etc/mysql/conf.d/
+  lineinfile: dest=/etc/mysql/my.cnf line='!includedir /etc/mysql/conf.d/' state=present

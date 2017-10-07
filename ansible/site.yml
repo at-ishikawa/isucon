@@ -8,3 +8,5 @@
       tags: pt-query-digest
     - role: redis
       tags: redis
+    - role: mysql
+      tags: mysql
