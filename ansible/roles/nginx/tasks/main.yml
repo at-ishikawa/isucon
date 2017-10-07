@@ -1,0 +1,14 @@
+- name: Copy a access log file format
+  copy:
+    src: ../files/access_log_params
+    dest: /etc/nginx/access_log_params
+    backup: yes
+
+- name: Insert a log file
+  blockinfile:
+    dest: /etc/nginx/nginx.conf
+    insertafter: '^http {'
+    content: |
+      include access_log_params;
+
+  notify: Restart nginx

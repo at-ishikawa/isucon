@@ -10,3 +10,5 @@
       tags: redis
     - role: mysql
       tags: mysql
+    - role: nginx
+      tags: nginx
