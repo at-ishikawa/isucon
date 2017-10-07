@@ -1,0 +1,6 @@
+# application server configuration
+- hosts: application
+  become: yes
+  roles:
+    - role: alp
+      tags: alp

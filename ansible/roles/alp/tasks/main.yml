@@ -1,0 +1,13 @@
+- name: Check alp binary exists
+  stat:
+    path: /usr/local/bin/alp
+  register: stat
+
+- name: Download and unarchive alp
+  unarchive:
+    src: https://github.com/tkuchiki/alp/releases/download/{{ alp.version }}/alp_linux_{{ host_arch }}.zip
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    remote_src: yes
+  when: stat.stat.exists == false
