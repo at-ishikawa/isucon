@@ -1,0 +1,10 @@
+- name: Download a percona toolkit
+  get_url:
+    url=https://www.percona.com/downloads/percona-toolkit/3.0.4/binary/debian/xenial/x86_64/percona-toolkit_3.0.4-1.xenial_amd64.deb
+    dest=/tmp/percona-toolkit.deb
+    check=
+
+- name: Install a percona toolkit
+  apt:
+    deb=/tmp/percona-toolkit.deb
+    state=present

@@ -4,5 +4,7 @@
   roles:
     - role: alp
       tags: alp
+    - role: pt-query-digest
+      tags: pt-query-digest
     - role: redis
       tags: redis
